@@ -17,16 +17,14 @@ async function parseBody(req, parser) {
   return parser(data);
 }
 
-export function createHttpServer(routing, port = 3001) {
+export function createHttpServer(routing, port = 3000) {
   const server = http
     .createServer(async (req, res) => {
       const handlerKey = req.method?.toUpperCase() + req.url;
       const handler = routing.get(handlerKey);
       if (!handler) return errorResponse(res, 'Not found');
-
       const contentType = req.headers['content-type']?.split(';')[0];
       const parser = parseOptions[contentType];
-
       let payload = {};
       if (contentType && parser) payload = await parseBody(req, parser);
       try {
@@ -39,7 +37,7 @@ export function createHttpServer(routing, port = 3001) {
     .listen(port, () => console.log('Server started on port:', port));
 
   function gracefulShutdown() {
-    console.log('graceful shutdown');
+    console.log('Shutdown');
     server.close((error) => {
       if (error) {
         console.error(error);

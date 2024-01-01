@@ -8,10 +8,10 @@ export function jsonParseSafe(data, fallback = {}) {
   
   export function successResponse(res, data) {
     res.setHeader('content-type', 'application/json');
-    res.end(JSON.stringify({ status: 'Success', data }));
+    res.end(JSON.stringify({ status: 'Success!', data }));
   }
   
   export function errorResponse(res, errorMessage) {
     res.setHeader('content-type', 'application/json');
-    res.end(JSON.stringify({ status: 'Failure', message: errorMessage }));
+    res.end(JSON.stringify({ status: 'Error!', message: errorMessage }));
   }
