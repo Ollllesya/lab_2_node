@@ -4,7 +4,7 @@ import { getController, postController, optionsController } from './controller.j
 
 const PORT = 3000;
 
-router.addRoute('/nodeget', 'GET', getController);
+router.addRoute('/', 'GET', getController);
 router.addRoute('/nodepost', 'POST', postController);
 router.addRoute('/nodeoptins', 'OPTIONS', optionsController);
 
