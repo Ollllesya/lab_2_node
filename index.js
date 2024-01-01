@@ -8,4 +8,4 @@ router.addRoute('/nodeget', 'GET', getController);
 router.addRoute('/nodepost', 'POST', postController);
 router.addRoute('/nodeoptins', 'OPTIONS', optionsController);
 
-createHttpServer(router, PORT);
+createHttpServer(router.routes, PORT);
